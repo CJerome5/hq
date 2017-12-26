@@ -84,7 +84,7 @@ def google(q_list, num):
 	google_url = "https://www.google.com/search?" + url_params
 	r = requests.get(google_url)
 
-	soup = BeautifulSoup(r.text)
+	soup = BeautifulSoup(r.text, "html.parser")
 	spans = soup.find_all('span', {'class' : 'st'})
 
 	text = u" ".join([span.get_text() for span in spans]).lower().encode('utf-8').strip()
